@@ -1,5 +1,4 @@
 import React, { FC } from 'react'
-import {ReactComponent as SliderArrowSVG } from '../../assets/arrow.svg'
 import { CustomDots, Dot } from './Dots.styled';
 
 export const Dots: FC<{

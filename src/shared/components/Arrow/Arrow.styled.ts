@@ -2,7 +2,6 @@
 import styled from 'styled-components';
 
 import {ReactComponent as SliderArrowSVG } from '../../assets/arrow.svg'
-import { FC } from 'react';
 
 export const NextArrow = styled(SliderArrowSVG)`
 
