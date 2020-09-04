@@ -1,10 +1,12 @@
 import React, { FC } from 'react'
 import { CustomDots, Dot } from './Dots.styled';
 
-export const Dots: FC<{
+type TProps = {
   dots: any[],
-}> = ({dots}) => {
-  console.log(dots)
+}
+
+export const Dots: FC<TProps> = ({dots}) => {
+
   return (
   <CustomDots>
     {dots.map((el) => {

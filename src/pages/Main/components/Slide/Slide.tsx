@@ -1,34 +1,30 @@
-import React, { FC } from 'react'
+import React, { FC, ReactNode } from 'react'
 import {
     SlideWrapper,
     AnimatedImg,
     AnimatedDevice,
     AnimatedLeft,
     AnimatedRight
-} from '../Main.styled';
-import { CustomLink } from '../../../shared/components/Link/Link.styled';
+} from '../../Main.styled';
+import { CustomLink } from '../../../../styles/Link.styled';
+import { TImages, TAnimated } from './types';
 
-export const Slide: FC<{
+type TProps = TAnimated & {
   onClick?: ()=>void
-  animated: boolean
-  isVisible: boolean
-  images: {
-    bg: string
-    left: string
-    device: {
-      url: string,
-      width: string,
-      height: string,
-    }
-    right: {
-      text: string,
-      link: string,
-    }
-  }
-}> = ({ animated, onClick, images, isVisible }) => {
+  children: any
+  Left: FC<TAnimated>
+  Right: FC<TAnimated>
+  Device: FC<TAnimated>
+}
+
+export const Slide: FC<TProps> = ({ animated, onClick, isVisible, children, Left, Right, Device }) => {
   return (
     <SlideWrapper onClick={onClick}>
-      <AnimatedImg 
+      {React.cloneElement(children, {animated, isVisible})}
+      <Left isVisible={isVisible} animated={animated} />
+      <Right isVisible={isVisible} animated={animated} />
+      <Device isVisible={isVisible} animated={animated} />
+      {/* <AnimatedImg 
         animated={animated}
         isVisible={isVisible}
         src={process.env.PUBLIC_URL + '/images/slider/'+ images.bg} 
@@ -50,7 +46,7 @@ export const Slide: FC<{
       <AnimatedRight animated={animated} isVisible={isVisible}>
         <p>{images.right.text}</p>
         <CustomLink href={images.right.link} target="_blank">Learn more</CustomLink>
-      </AnimatedRight>
-    </SlideWrapper>
+      </AnimatedRight>*/}
+    </SlideWrapper> 
   )
 }
